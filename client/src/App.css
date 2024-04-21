@@ -1,0 +1,22 @@
+input{
+    display: block;
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    padding-left: 10px;
+    outline: none;
+   }
+  
+   .log-in{
+    display: flex;
+    justify-content: center;
+    margin-top: 10rem;
+   }
+  
+   form{
+    background-color: rgba(99, 91, 91,0.5);
+    padding: 200px;
+    border-radius: 20px;
+   
+   }
