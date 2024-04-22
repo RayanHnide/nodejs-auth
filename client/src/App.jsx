@@ -5,6 +5,7 @@ import { BrowserRouter,Route,Routes } from 'react-router-dom'
 import Login from './pages/Login'
 import HomePage from './pages/HomePage'
 import HeroPage from './pages/HeroPage'
+import AllPosts from './pages/AllPosts'
 function App() {
  
 
@@ -16,6 +17,7 @@ function App() {
         <Route path='/heropage' element={<HeroPage/>}/>
         <Route  path='/register' element={<Signup/>}/>
         <Route  path='/login' element={<Login/>}/>
+        <Route path='all-post' element={<AllPosts/>}/>
 
       </Routes>
       

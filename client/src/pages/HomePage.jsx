@@ -1,6 +1,24 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function HomePage(){
+
+    const[title,setTitle] = useState('')
+    const[content,setContent] = useState('')
+
+
+    function handleSubmit(e){
+        e.preventDefault()
+        axios.post('http://localhost:3001/post',{title,content})
+        .then(res =>console.log(res))
+        .catch(err=> console.log(err))
+       
+     }
+
+   
+
+    
     return(
         <>
         
@@ -17,6 +35,8 @@ export default function HomePage(){
                     Register
                 </Link>
              </div>
+
+
         
         </>
     )

@@ -2,7 +2,8 @@
     const mongoose = require('mongoose')
     const cors = require('cors')
 
-    const EmployeeModel = require('./models/Employe')
+    const EmployeeModel = require('./models/Users')
+    const PostModel = require('./models/AddPost')
 
     const app=express()
     app.use(express.json())
@@ -39,3 +40,60 @@
     app.post('/register',(req,res)=>{
         EmployeeModel.create(req.body).then(employees=>res.json(employees)).catch(err=>console.log(err))
     })
+
+    app.get('/users', (req, res) => {
+        EmployeeModel.find()
+            .then(users => {
+                res.json(users);
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).json({ error: 'Internal Server Error' });
+            });
+    });
+
+     
+    app.delete('/user/:id', (req, res) => {
+        const userId = req.params.id;
+        EmployeeModel.findByIdAndDelete(userId)
+            .then(() => {
+                res.json({ message: 'User deleted successfully' });
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).json({ error: 'Failed to delete user' });
+            });
+    });
+
+   
+    app.post('/post', (req, res) => {
+        const { title, content } = req.body;
+        const newPost = {
+            title: title,
+            content: content
+        };
+        PostModel.create(newPost)
+            .then(post => {
+                console.log('Post created successfully:', post);
+                res.json({ message: 'Post created successfully', post: post });
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).json({ error: 'Failed to create post' });
+            });
+    });
+
+
+
+    app.get('/AllPost', (req, res) => {
+        PostModel.find()
+            .then(posts => {
+                res.json(posts);
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).json({ error: 'Failed to fetch posts' });
+            });
+    });
+    
+
