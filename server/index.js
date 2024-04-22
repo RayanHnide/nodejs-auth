@@ -18,7 +18,7 @@
 
     app.use(cors(
         {
-            origin:'',
+            origin:'https://node-auth-ywg3.vercel.app',
             methods:['GET','POST','DELETE'],
             credentials:true
         }
