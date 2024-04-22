@@ -16,6 +16,13 @@
         console.log('ERROR:error',err);
     })
 
+    app.use(cors(
+        {
+            origin:'',
+            methods:['GET','POST','DELETE'],
+            credentials:true
+        }
+    ))
 
     app.listen(3001,()=>{
         console.log('server is running');
